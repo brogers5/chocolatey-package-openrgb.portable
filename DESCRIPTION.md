@@ -1,25 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
-<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
-  <metadata>
-    <id>openrgb.portable</id>
-    <version>1.0.0-rc1</version>
-    <packageSourceUrl>https://github.com/brogers5/chocolatey-package-openrgb.portable/tree/v1.0.0-rc1</packageSourceUrl>
-    <owners>sublym0nal</owners>
-    <title>OpenRGB (Portable)</title>
-    <authors>Adam Honse (CalcProgrammer1)</authors>
-    <projectUrl>https://openrgb.org/</projectUrl>
-    <iconUrl>https://cdn.jsdelivr.net/gh/brogers5/chocolatey-package-openrgb.portable@c6510c3eb4b5fe67f46449147e3da5738e6851e4/openrgb.portable.png</iconUrl>
-    <copyright>Copyright (C) 2025 Adam Honse</copyright>
-    <licenseUrl>https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/release_candidate_1.0rc1/LICENSE</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <projectSourceUrl>https://gitlab.com/CalcProgrammer1/OpenRGB/-/tree/release_candidate_1.0rc1</projectSourceUrl>
-    <docsUrl>https://gitlab.com/OpenRGBDevelopers/OpenRGB-Wiki/-/blob/stable/home.md</docsUrl>
-    <mailingListUrl>https://lemmy.ml/c/OpenRGB</mailingListUrl>
-    <bugTrackerUrl>https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues</bugTrackerUrl>
-    <tags>openrgb rgb motherboard gpu ram keyboard headset led cross-platform foss</tags>
-    <summary>Open source RGB lighting control that doesn't depend on manufacturer software</summary>
-    <description><![CDATA[## OpenRGB
+## OpenRGB
 
 One of the biggest complaints about RGB is the software ecosystem surrounding it. Every manufacturer has their own app, their own brand, their own style. If you want to mix and match devices, you end up with a ton of conflicting, functionally identical apps competing for your background resources. On top of that, these apps are proprietary and Windows-only. Some even require online accounts. What if there was a way to control all of your RGB devices from a single app, on both Windows and Linux, without any nonsense? That is what OpenRGB sets out to achieve. One app to rule them all.
 
@@ -59,18 +38,3 @@ For future upgrade operations, consider opting into Chocolatey's `useRememberedA
 ```shell
 choco feature enable --name="'useRememberedArgumentsForUpgrades'"
 ```
-]]></description>
-    <releaseNotes>https://gitlab.com/CalcProgrammer1/OpenRGB/-/releases/release_candidate_1.0rc1</releaseNotes>
-    <dependencies>
-      <dependency id="vcredist140" version="14.22.27821" />
-    </dependencies>
-  </metadata>
-  <files>
-    <file src="tools\chocolateybeforemodify.ps1" target="tools" />
-    <file src="tools\chocolateyinstall.ps1" target="tools" />
-    <file src="tools\chocolateyuninstall.ps1" target="tools" />
-    <file src="tools\OpenRGB_*_Windows_*.zip" target="tools" />
-    <file src="tools\LICENSE.txt" target="tools" />
-    <file src="tools\VERIFICATION.txt" target="tools" />
-  </files>
-</package>
