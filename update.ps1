@@ -1,3 +1,5 @@
+[CmdletBinding()]
+param($IncludeStream)
 Import-Module au
 
 $currentPath = (Split-Path $MyInvocation.MyCommand.Definition)
@@ -8,8 +10,9 @@ $softwareRepo = 'CalcProgrammer1/OpenRGB'
 
 function global:au_GetLatest {
     $streams = [ordered] @{
-        ReleaseCandidate = Get-LatestReleaseCandidateVersionInfo
-        Stable           = Get-LatestStableVersionInfo
+        ReleaseCandidateWinRing0 = Get-LatestReleaseCandidateVersionInfo -WinRing0
+        ReleaseCandidate         = Get-LatestReleaseCandidateVersionInfo
+        Stable                   = Get-LatestStableVersionInfo
     }
 
     return @{ Streams = $streams }
@@ -60,4 +63,4 @@ function global:au_SearchReplace {
     }
 }
 
-Update-Package -ChecksumFor None -NoReadme
+Update-Package -ChecksumFor None -IncludeStream $IncludeStream -NoReadme
