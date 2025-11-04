@@ -60,7 +60,7 @@ For future upgrade operations, consider opting into Chocolatey's `useRememberedA
 choco feature enable --name="'useRememberedArgumentsForUpgrades'"
 ```
 ]]></description>
-    <releaseNotes>https://gitlab.com/CalcProgrammer1/OpenRGB/-/releases/release_candidate_1.0rc2wr0</releaseNotes>
+    <releaseNotes>https://codeberg.org/OpenRGB/OpenRGB/releases/tag/release_candidate_1.0rc2wr0</releaseNotes>
     <dependencies>
       <dependency id="vcredist140" version="14.22.27821" />
     </dependencies>
