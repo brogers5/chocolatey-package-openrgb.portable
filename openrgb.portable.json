@@ -1,4 +1,5 @@
 {
   "Stable": "0.9.0",
-  "ReleaseCandidate": "1.0.0-rc1"
+  "ReleaseCandidate": "1.0.0-rc1",
+  "ReleaseCandidateWinRing0": "1.0.0-rc2wr0"
 }

@@ -7,12 +7,12 @@ website. The Releases page is at the following URL:
 https://openrgb.org/releases.html
 
 For convenience, these are direct URLs to the relevant archives:
-https://openrgb.org/releases/release_candidate_1.0rc1/OpenRGB_1.0rc1_Windows_32_1fbacde.zip
-https://openrgb.org/releases/release_candidate_1.0rc1/OpenRGB_1.0rc1_Windows_64_1fbacde.zip
+https://codeberg.org/OpenRGB/OpenRGB/releases/download/release_candidate_1.0rc2wr0/OpenRGB_1.0rc2wr0_Windows_32_a589a0f.zip
+https://codeberg.org/OpenRGB/OpenRGB/releases/download/release_candidate_1.0rc2wr0/OpenRGB_1.0rc2wr0_Windows_64_a589a0f.zip
 
 The following PowerShell pipeline will calculate and print a SHA256 hash for each archive:
 
-    Get-FileHash -Path @('OpenRGB_1.0rc1_Windows_32_1fbacde.zip', 'OpenRGB_1.0rc1_Windows_64_1fbacde.zip') -Algorithm SHA256 | Select-Object -Property Path, Hash
+    Get-FileHash -Path @('OpenRGB_1.0rc2wr0_Windows_32_a589a0f.zip', 'OpenRGB_1.0rc2wr0_Windows_64_a589a0f.zip') -Algorithm SHA256 | Select-Object -Property Path, Hash
 
 This pipeline should be executed against both independently downloaded archives, as well as the
 copies distributed with the package. Both copies of each archive should have identical hash values.
@@ -20,5 +20,5 @@ A matching hash value should confirm that no corruption or tampering has occurre
 generation process.
 
 For reference, the following SHA256 hashes were calculated during the package's automated creation:
-OpenRGB_1.0rc1_Windows_32_1fbacde.zip: 675948671CBDD4351210BA56C11017FEEF224B6B30E998AD70C0674098AFE3B1
-OpenRGB_1.0rc1_Windows_64_1fbacde.zip: E735D4817806BAA671421A6B5F4D551DE0AEF786496AAC0B39751C776B607021
+OpenRGB_1.0rc2wr0_Windows_32_a589a0f.zip: 78264A7ED5CDDE04D1DB836C8DC7BF943C801956EB86C8A44797217EB80DA36A
+OpenRGB_1.0rc2wr0_Windows_64_a589a0f.zip: 9A79453621C24AF94BD21403CC0D7942BF56D7874B8A38C619ECECC41BED92BE
