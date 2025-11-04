@@ -63,3 +63,7 @@ if ($pp.Start) {
     Write-Warning "$softwareName failed to start, please try to manually start it instead."
   }
 }
+
+Write-Warning 'OpenRGB builds containing WinRing0 have been deprecated!'
+Write-Warning 'For more details, please review: https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues/2227'
+Write-Warning 'It is strongly recommended to transition to a PawnIO-compatible build at your earliest convenience!'
