@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop'
 
-$archiveFileNames = @('OpenRGB_1.0rc2wr0_Windows_64_a589a0f.zip', 'OpenRGB_1.0rc2wr0_Windows_32_a589a0f.zip')
+$archiveFileNames = @('OpenRGB_1.0rc2_Windows_64_0fca93e.zip', 'OpenRGB_1.0rc2_Windows_32_0fca93e.zip')
 
 if ((Get-OSArchitectureWidth -Compare 64) -and ($env:chocolateyForceX86 -ne $true)) {
   $extractedArchiveName = $archiveFileNames[0]
