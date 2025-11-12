@@ -44,13 +44,24 @@ else {
 if (!$pp.NoDesktopShortcut) {
   $desktopDirectory = [Environment]::GetFolderPath([Environment+SpecialFolder]::DesktopDirectory)
   $shortcutFilePath = Join-Path -Path $desktopDirectory -ChildPath $linkName
-  Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -ErrorAction SilentlyContinue
+  Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -RunAsAdmin:$pp.CreateAdminShortcuts -ErrorAction SilentlyContinue
 }
 
 if (!$pp.NoProgramsShortcut) {
   $programsDirectory = [Environment]::GetFolderPath([Environment+SpecialFolder]::Programs)
   $shortcutFilePath = Join-Path -Path $programsDirectory -ChildPath $linkName
-  Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -ErrorAction SilentlyContinue
+  Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -RunAsAdmin:$pp.CreateAdminShortcuts -ErrorAction SilentlyContinue
+}
+
+if (!$pp.DontCheckForPawnIO) {
+  $pawnIoInstallLocation = Get-AppInstallLocation -AppNamePattern 'PawnIO'
+  if ($null -eq $pawnIoInstallLocation) {
+    Write-Warning 'OpenRGB has recently switched from using WinRing0 to PawnIO, which may require a separate installation.'
+    Write-Warning 'If your devices require I2C or SMBus access, please install PawnIO prior to using OpenRGB.'
+  }
+  if (!$pp.CreateAdminShortcuts) {
+    Write-Warning 'You may need to run OpenRGB as Administrator for PawnIO access to work correctly.'
+  }
 }
 
 if ($pp.Start) {
@@ -63,7 +74,3 @@ if ($pp.Start) {
     Write-Warning "$softwareName failed to start, please try to manually start it instead."
   }
 }
-
-Write-Warning 'OpenRGB builds containing WinRing0 have been deprecated!'
-Write-Warning 'For more details, please review: https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues/2227'
-Write-Warning 'It is strongly recommended to transition to a PawnIO-compatible build at your earliest convenience!'
