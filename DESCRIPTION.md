@@ -22,7 +22,8 @@ One of the biggest complaints about RGB is the software ecosystem surrounding it
 * `/NoDesktopShortcut` - Opt out of creating a Desktop shortcut.
 * `/NoProgramsShortcut` - Opt out of creating a Programs shortcut in your Start Menu.
 * `/DontCheckForPawnIO` - By default, the package installation will check if [PawnIO](https://community.chocolatey.org/packages/pawnio) is installed on your system, and prompt you to install it if it is missing. If your configuration is either incompatible or does not require PawnIO, pass this to skip over the check.
-* `/CreateAdminShortcuts` - OpenRGB must be run as Administrator in order for configurations that depend on PawnIO to work correctly. Pass this to ensure OpenRGB's shortcuts are created accordingly.
+* `/CreateAdminShortcuts` - OpenRGB should be run as Administrator in order for configurations that depend on PawnIO to work correctly. Pass this to ensure OpenRGB's shortcuts are created accordingly.
+* `/CreateAndStartService` - If you'd prefer to run OpenRGB unelevated, PawnIO-dependent functionality will require running a separate instance of OpenRGB as a service application. Pass this to create the required service (if needed) and start it.
 * `/Start` - Automatically start OpenRGB after installation completes.
 
 ## Package Notes

@@ -53,6 +53,9 @@ if (!$pp.NoProgramsShortcut) {
   Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -RunAsAdmin:$pp.CreateAdminShortcuts -ErrorAction SilentlyContinue
 }
 
+$serviceName = $env:ChocolateyPackageName
+$service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue
+
 if (!$pp.DontCheckForPawnIO) {
   $pawnIoInstallLocation = Get-AppInstallLocation -AppNamePattern 'PawnIO'
   if ($null -eq $pawnIoInstallLocation) {
@@ -60,8 +63,27 @@ if (!$pp.DontCheckForPawnIO) {
     Write-Warning 'If your devices require I2C or SMBus access, please install PawnIO prior to using OpenRGB.'
   }
   if (!$pp.CreateAdminShortcuts) {
-    Write-Warning 'You may need to run OpenRGB as Administrator for PawnIO access to work correctly.'
+    if (!$pp.CreateAndStartService) {
+      if ($service) {
+        Write-Warning 'The package-managed OpenRGB service exists, but will need to be restarted manually for PawnIO access to work correctly.'
+        Write-Warning 'Consider passing /CreateAndStartService next time to ensure the service is restarted after upgrading.'
+      }
+      else {
+        Write-Warning 'You may need to run OpenRGB as Administrator for PawnIO access to work correctly.'
+      }
+    }
   }
+}
+
+if ($pp.CreateAndStartService) {
+  if (!$service) {
+    New-Service -Name $serviceName -BinaryPathName $targetPath -DisplayName 'OpenRGB (Portable)' -Description 'OpenRGB SDK Server' -StartupType Automatic
+  }
+  else {
+    Write-Debug "$serviceName service already exists"
+  }
+
+  Start-Service -Name $serviceName
 }
 
 if ($pp.Start) {

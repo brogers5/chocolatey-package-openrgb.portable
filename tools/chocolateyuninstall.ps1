@@ -17,4 +17,10 @@ if (Test-Path $desktopShortcutFilePath) {
   Remove-Item $desktopShortcutFilePath
 }
 
+#The Remove-Service cmdlet only exists for PowerShell Core. Using sc.exe to ensure compatibility with Windows PowerShell.
+$scPath = Join-Path -Path $env:SystemRoot -ChildPath 'System32' | Join-Path -ChildPath 'sc.exe'
+Start-ChocolateyProcessAsAdmin -ExeToRun $scPath -Statements @('delete', "$env:ChocolateyPackageName") -Elevated -ValidExitCodes @(0, #ERROR_SUCCESS
+  1060, #ERROR_SERVICE_DOES_NOT_EXIST
+  1072) #ERROR_SERVICE_MARKED_FOR_DELETE
+
 Uninstall-BinFile -Name 'OpenRGB'
